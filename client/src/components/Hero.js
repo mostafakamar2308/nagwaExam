@@ -9,7 +9,6 @@ function Hero() {
   //add user updateFN to update the user State
   const dispatch = useDispatch();
   const changeUserState = (e) => {
-    console.log(e.target.value);
     dispatch(updateFN(e.target.value));
   };
   // const user = useSelector((state) => state.user);

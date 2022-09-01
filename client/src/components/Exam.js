@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import Question from "./Question";
 const axios = require("axios");
 
-function Exam() {
+function Exam(props) {
   const [wordList, setWordList] = useState([]);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   useEffect(() => {
     axios
       .get("/api/words")
       .then((res) => {
-        console.log(res.data);
         return res.data;
       })
       .then((res) => setWordList(res));
@@ -20,12 +20,11 @@ function Exam() {
       axios
         .post(`/api/answer/${id}`, { answer: answer })
         .then((res) => {
-          console.log(res.data);
           return res.data;
         })
         .then((res) => {
           if (res.selectedAnswer === res.correctAnswer) {
-            console.log(true);
+            props.handleScores();
           } else {
             console.log(false);
           }
@@ -40,23 +39,47 @@ function Exam() {
     }
   };
   return (
-    <div>
-      <div className="progress-bar"></div>
-      <div className="exam-question">
-        {wordList &&
-          wordList.map(
-            (ele, index) =>
-              index === currentQuestion && (
-                <Question
-                  key={index}
-                  word={ele.word}
-                  id={ele.id}
-                  handleAnswer={checkAnswer}
-                />
-              )
-          )}
+    <section>
+      <div className="progress-bar">
+        <div
+          className="progress"
+          style={{
+            width: `${(currentQuestion / 10) * 100}%`,
+          }}
+        ></div>
       </div>
-    </div>
+      {currentQuestion < 10 ? (
+        <>
+          <div className="question-number">
+            <p>Question {currentQuestion + 1}:</p>
+          </div>
+          <div className="exam-question">
+            {wordList &&
+              wordList.map(
+                (ele, index) =>
+                  index === currentQuestion && (
+                    <Question
+                      key={index}
+                      word={ele.word}
+                      id={ele.id}
+                      handleAnswer={checkAnswer}
+                    />
+                  )
+              )}
+          </div>
+        </>
+      ) : (
+        <div className="finish">
+          <div>You finished your exam :D</div>
+          <h2>
+            Your Score is <span>{(props.score.length / 10) * 100} %</span>
+          </h2>
+          <Link className="btn" to="/rank">
+            See Your Rank
+          </Link>
+        </div>
+      )}
+    </section>
   );
 }
 

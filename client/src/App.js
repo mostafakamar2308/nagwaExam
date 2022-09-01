@@ -3,10 +3,16 @@ import logo from "./logo.png";
 import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
 import Hero from "./components/Hero";
 import Exam from "./components/Exam";
+import { useState } from "react";
 import Rank from "./components/Rank";
 import MyScores from "./components/MyScores";
 
 function App() {
+  const [score, setScore] = useState([]);
+
+  const changeScore = () => {
+    setScore((prev) => [...prev, true]);
+  };
   return (
     <div className="App">
       <Router>
@@ -17,9 +23,12 @@ function App() {
         </header>
         <Routes>
           <Route path="/" element={<Hero />} />
-          <Route path="/rank" element={<Rank />} />
+          <Route path="/rank" element={<Rank score={score} />} />
           <Route path="/my-scores" element={<MyScores />} />
-          <Route path="/exam" element={<Exam />} />
+          <Route
+            path="/exam"
+            element={<Exam handleScores={changeScore} score={score} />}
+          />
         </Routes>
       </Router>
     </div>

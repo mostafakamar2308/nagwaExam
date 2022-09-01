@@ -70,3 +70,30 @@ body {
   display: flex;
   justify-content: space-between;
 }
+
+.progress-bar {
+  margin: 0 auto;
+  width: 80vw;
+  height: 5vh;
+  border-radius: 3px;
+  background: #eee;
+}
+.progress {
+  height: 5vh;
+  border-radius: 3px;
+  background: var(--orangeClr);
+}
+.finish {
+  margin: 5rem 0 auto;
+  text-align: center;
+  color: var(--blueClr);
+}
+h2 > span {
+  color: var(--orangeClr);
+}
+
+.question-number p {
+  padding: 2rem 0 0.5rem;
+  width: 80%;
+  margin: 0 auto;
+}
