@@ -1,0 +1,60 @@
+:root {
+  --textClr: #5c676c;
+  --blueClr: #026bb0;
+  --orangeClr: #f5aa00;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 110px;
+  border-bottom: 2px solid var(--textClr);
+}
+body {
+  font-size: 1.5rem;
+  color: var(--textClr);
+}
+
+* {
+  outline: none;
+  box-sizing: border-box;
+}
+.hero {
+  display: grid;
+  grid-template-columns: 60% 40%;
+  place-items: center;
+  max-height: calc(100vh - 130px);
+}
+.student-info {
+  width: 35vw;
+  display: grid;
+  row-gap: 20px;
+}
+
+.student-info input {
+  font-size: 1.7rem;
+  display: block;
+  width: 34vw;
+  text-indent: 5px;
+}
+
+.btn {
+  background-color: var(--blueClr);
+  color: white;
+  font-weight: bold;
+  border-radius: 10px;
+  font-size: 1rem;
+  text-decoration: none;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.btn:hover {
+  background: #027ac9;
+}
+.student-actions {
+  display: flex;
+  justify-content: space-around;
+}
