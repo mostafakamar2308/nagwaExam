@@ -58,3 +58,15 @@ body {
   display: flex;
   justify-content: space-around;
 }
+
+.question {
+  width: 60%;
+  margin: 0 auto;
+  margin-top: 20px;
+  border: 2px solid var(--orangeClr);
+  padding: 01rem 2rem;
+}
+.question-choices {
+  display: flex;
+  justify-content: space-between;
+}

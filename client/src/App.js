@@ -12,7 +12,7 @@ function App() {
       <Router>
         <header className="header">
           <Link to="/">
-            {/* <img src={logo} height={100} alt="Nagwa-Logo" /> */}
+            <img src={logo} height={100} alt="Nagwa-Logo" />
           </Link>
         </header>
         <Routes>
