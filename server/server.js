@@ -4,6 +4,8 @@ const app = express();
 
 //Get the testData Json File
 const testData = require("./TestData.json");
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
 
 //make an endpoint for the words
 app.get("/api/words", (req, res) => {
@@ -12,6 +14,13 @@ app.get("/api/words", (req, res) => {
   let finalArr = shuffeledArray.slice(0, 10);
   //   console.log(finalArr.length);
   res.json(finalArr);
+});
+app.post("/api/answer/:id", (req, res) => {
+  const { id } = req.params;
+  const { answer } = req.body;
+  let word = testData.wordList.find((ele) => ele.id === Number(id));
+
+  res.json({ correctAnswer: word.pos, selectedAnswer: answer });
 });
 
 //make an endpoint for the rank system
