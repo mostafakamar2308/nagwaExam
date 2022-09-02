@@ -38,9 +38,8 @@ function Rank(props) {
       </div>
       <div className="chart">
         {scoreRec.map((ele) => {
-          if (ele.rec === 0) {
-            return;
-          }
+          if (ele.rec === 0) return;
+
           return (
             <div
               className={

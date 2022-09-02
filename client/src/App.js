@@ -9,6 +9,9 @@ import MyScores from "./components/MyScores";
 
 function App() {
   const [score, setScore] = useState([]);
+  const reset = () => {
+    score.length > 0 && setScore([]);
+  };
 
   const changeScore = () => {
     setScore((prev) => [...prev, true]);
@@ -22,7 +25,7 @@ function App() {
           </Link>
         </header>
         <Routes>
-          <Route path="/" element={<Hero />} />
+          <Route path="/" element={<Hero reset={reset} />} />
           <Route path="/rank" element={<Rank score={score} />} />
           <Route path="/my-scores" element={<MyScores />} />
           <Route

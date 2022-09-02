@@ -30,9 +30,11 @@ function Exam(props) {
           }
         })
         .then(() => {
-          currentQuestion < 10
-            ? setCurrentQuestion((prevState) => prevState + 1)
-            : console.log("Finished Questions");
+          setTimeout(() => {
+            currentQuestion < 10
+              ? setCurrentQuestion((prevState) => prevState + 1)
+              : console.log("Finished Questions");
+          }, 1300);
         });
     } catch (e) {
       console.log(e);

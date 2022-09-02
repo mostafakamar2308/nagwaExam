@@ -5,7 +5,8 @@ import { useDispatch } from "react-redux/es/hooks/useDispatch";
 import hero from "../hero.jpg";
 import { updateFN } from "../features/userR";
 
-function Hero() {
+function Hero(props) {
+  props.reset();
   //add user updateFN to update the user State
   const dispatch = useDispatch();
   const changeUserState = (e) => {

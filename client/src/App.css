@@ -126,3 +126,14 @@ h2 > span {
   justify-content: center;
   row-gap: 20px;
 }
+
+.feedBack {
+  text-align: center;
+  font-weight: bold;
+}
+.true-feedback {
+  color: var(--blueClr);
+}
+.false-feedback {
+  color: var(--orangeClr);
+}
