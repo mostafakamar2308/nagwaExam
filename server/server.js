@@ -1,8 +1,11 @@
 //Initialize the express App
 const express = require("express");
 const app = express();
-
+const fs = require("fs");
+const path = require("path");
+const axios = require("axios");
 //Get the testData Json File
+
 const testData = require("./TestData.json");
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
@@ -32,8 +35,28 @@ app.get("/api/rank/:score", (req, res) => {
   let newScoreList = scoreList.filter((ele) => ele < score);
   //calculate the rank of the user and send it
   let rank = (newScoreList.length / scoreList.length) * 100;
-  console.log(rank);
   res.json({ rank: rank, list: scoreList });
+});
+
+const axiosInstance = axios.create({
+  //create an instance of an axios client
+  baseURL: "https://api.unsplash.com",
+  headers: {
+    Authorization: "Client-ID Q8RYZsItlWHcOO8GNOhGmYlHNiGTxEfrj-SfygrIHZ8",
+  },
+});
+
+//make an end point for incorrect answers:
+app.get("/api/incorrects", (req, res) => {
+  fs.readFile(path.join(__dirname, "problems.json"), "utf8", (err, data) => {
+    if (err) {
+      console.log(err);
+    }
+    let obj = JSON.parse(data);
+    console.log(obj.words);
+
+    res.json(obj.words);
+  });
 });
 
 app.listen(5000, () => {

@@ -38,7 +38,7 @@ function Rank(props) {
       <div>
         <strong>Congratulations {user}</strong>
         <div>
-          You got Higher than <strong>{scoreState.rank}%</strong> of your class
+          You are above <strong>{scoreState.rank}%</strong> of your class
         </div>
       </div>
       <div className="chart">
