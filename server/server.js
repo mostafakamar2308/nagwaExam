@@ -33,7 +33,7 @@ app.get("/api/rank/:score", (req, res) => {
   //calculate the rank of the user and send it
   let rank = (newScoreList.length / scoreList.length) * 100;
   console.log(rank);
-  res.json(newScoreList);
+  res.json({ rank: rank, list: scoreList });
 });
 
 app.listen(5000, () => {
