@@ -130,6 +130,7 @@ h2 > span {
 .feedBack {
   text-align: center;
   font-weight: bold;
+  font-size: 2rem;
 }
 .true-feedback {
   color: var(--blueClr);

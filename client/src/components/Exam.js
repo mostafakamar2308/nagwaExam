@@ -4,6 +4,9 @@ import Question from "./Question";
 const axios = require("axios");
 
 function Exam(props) {
+  useEffect(() => {
+    props.reset();
+  }, []);
   const [wordList, setWordList] = useState([]);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   useEffect(() => {

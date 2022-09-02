@@ -30,7 +30,9 @@ function App() {
           <Route path="/my-scores" element={<MyScores />} />
           <Route
             path="/exam"
-            element={<Exam handleScores={changeScore} score={score} />}
+            element={
+              <Exam handleScores={changeScore} score={score} reset={reset} />
+            }
           />
         </Routes>
       </Router>

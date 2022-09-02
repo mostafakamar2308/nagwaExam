@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
+import { useSelector } from "react-redux/es/hooks/useSelector";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 function Rank(props) {
+  const user = useSelector((state) => state.user);
   const [scoreState, setScoreState] = useState({
     rank: 0,
     list: [],
@@ -33,8 +36,10 @@ function Rank(props) {
   return (
     <section className="rank-section">
       <div>
-        <div>You got Higher than {scoreState.rank}% of your class</div>
-        <strong>Congratulations on your {props.score.length * 10}</strong>
+        <strong>Congratulations {user}</strong>
+        <div>
+          You got Higher than <strong>{scoreState.rank}%</strong> of your class
+        </div>
       </div>
       <div className="chart">
         {scoreRec.map((ele) => {
@@ -55,6 +60,9 @@ function Rank(props) {
           );
         })}
       </div>
+      <Link to="/exam" className="btn">
+        Try Again?
+      </Link>
     </section>
   );
 }

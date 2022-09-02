@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-// import { useSelector } from "react-redux/es/hooks/useSelector";
 import { useDispatch } from "react-redux/es/hooks/useDispatch";
 import hero from "../hero.jpg";
 import { updateFN } from "../features/userR";
@@ -12,7 +11,6 @@ function Hero(props) {
   const changeUserState = (e) => {
     dispatch(updateFN(e.target.value));
   };
-  // const user = useSelector((state) => state.user);
   return (
     <section className="hero">
       <div className="hero-container">
