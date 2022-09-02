@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 function MyScores() {
+  //get the words which the user answered incorrectly from the server then assign them to state
   const [words, setWords] = useState([]);
-
   useEffect(() => {
     axios.get("api/incorrects").then((res) => {
       setWords(res.data);
@@ -22,7 +22,10 @@ function MyScores() {
           })}
         </div>
       ) : (
-        <div>Perfect My Man</div>
+        //if the user has no incorrect words, then he is a beast.
+        <div className="perfect-answers">
+          Either you didn't take the exam or You are a beast :D
+        </div>
       )}
     </div>
   );

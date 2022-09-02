@@ -2,7 +2,9 @@ import axios from "axios";
 import React, { useState } from "react";
 
 function Question(props) {
+  //make a feedback state to store the current question state: answered correctly or wrong
   const [feedBack, setFeedBack] = useState("");
+  //get the correct answer from the server then compare it to the answer user has given
   const getFeedBack = (questionId, id) => {
     axios
       .post(`/api/answer/${questionId}`, { answer: id })
@@ -17,7 +19,7 @@ function Question(props) {
         }
       });
   };
-
+  //the question component consists of the word and 4 buttons each has its own id which is given to the handle answer function which evaluate it
   return (
     <div className="question">
       <h2>{props.word.toUpperCase()}</h2>

@@ -5,8 +5,9 @@ import hero from "../hero.jpg";
 import { updateFN } from "../features/userR";
 
 function Hero(props) {
+  //reset the scores when the hero is rendered
   props.reset();
-  //add user updateFN to update the user State
+  //add user updateFN to update the user State to get the name of the user
   const dispatch = useDispatch();
   const changeUserState = (e) => {
     dispatch(updateFN(e.target.value));
@@ -27,7 +28,7 @@ function Hero(props) {
             Enter the Exam
           </Link>
           <Link to="my-scores" className="btn">
-            Previous Scores
+            Review
           </Link>
         </div>
       </div>

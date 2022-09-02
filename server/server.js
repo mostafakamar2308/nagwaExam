@@ -38,15 +38,7 @@ app.get("/api/rank/:score", (req, res) => {
   res.json({ rank: rank, list: scoreList });
 });
 
-const axiosInstance = axios.create({
-  //create an instance of an axios client
-  baseURL: "https://api.unsplash.com",
-  headers: {
-    Authorization: "Client-ID Q8RYZsItlWHcOO8GNOhGmYlHNiGTxEfrj-SfygrIHZ8",
-  },
-});
-
-//make an end point for incorrect answers:
+//make an end point  incorrect answers:
 app.get("/api/incorrects", (req, res) => {
   fs.readFile(path.join(__dirname, "problems.json"), "utf8", (err, data) => {
     if (err) {
@@ -56,6 +48,22 @@ app.get("/api/incorrects", (req, res) => {
     console.log(obj.words);
 
     res.json(obj.words);
+  });
+});
+app.post("/api/incorrects", (req, res) => {
+  const { word, pos } = req.body;
+  fs.readFile(path.join(__dirname, "problems.json"), "utf8", (err, data) => {
+    if (err) {
+      console.log(err);
+    }
+    let obj = JSON.parse(data);
+    obj.words.push({ word, pos });
+    console.log(obj.words);
+    let json = JSON.stringify(obj); //convert it back to json
+    fs.writeFile("problems.json", json, "utf8", () => {
+      console.log("success");
+      return res.json(obj.words);
+    }); // write it back
   });
 });
 

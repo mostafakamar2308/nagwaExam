@@ -8,11 +8,14 @@ import Rank from "./components/Rank";
 import MyScores from "./components/MyScores";
 
 function App() {
+  //a score function which will only be pobulated if the user answered correctly
   const [score, setScore] = useState([]);
+  //the reset function will be called if the user got into the exam or home page after attempting the exam
+  //to avoid any unnecessary bugs
   const reset = () => {
     score.length > 0 && setScore([]);
   };
-
+  //update score FN
   const changeScore = () => {
     setScore((prev) => [...prev, true]);
   };
@@ -20,6 +23,7 @@ function App() {
     <div className="App">
       <Router>
         <header className="header">
+          {/* the logo is the redirect to Home page */}
           <Link to="/">
             <img src={logo} height={100} alt="Nagwa-Logo" />
           </Link>

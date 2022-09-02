@@ -303,3 +303,9 @@
     text-align: center;
   }
 }
+.perfect-answers {
+  text-align: center;
+  font-size: 2.5rem;
+  color: var(--blueClr);
+  font-weight: bold;
+}
